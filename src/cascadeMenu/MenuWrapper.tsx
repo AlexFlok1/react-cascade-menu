@@ -28,6 +28,7 @@ const MenuWrapper: FC<MenuWrapperPropsT> = ({
       return { top: `${y + height}px`, left: `${x}px` };
     }
   };
+
   return (
     <StyledMenuWrapper
       component='div'
@@ -41,6 +42,7 @@ const MenuWrapper: FC<MenuWrapperPropsT> = ({
           menuItems.length > 0 &&
           menuItems.map((item) => (
             <MenuItem
+              isVisible={isVisible}
               key={item.key}
               subMenu={item.subMenu}
               itemContent={item.itemContent}

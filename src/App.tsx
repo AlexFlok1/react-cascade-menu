@@ -9,37 +9,59 @@ const App: FC = () => {
   const menu: MenuItemT[] = [
     {
       key: '1',
-      itemContent: <>Menu 1</>,
+      itemContent: () => <>Menu 1</>,
     },
     {
       key: '2',
-      itemContent: <>Menu 2</>,
+      itemContent: () => <>Menu 2</>,
     },
     {
       key: '3',
-      itemContent: <>Menu 3</>,
+      itemContent: () => <>Menu 3</>,
       subMenu: {
         items: [
           {
             key: '4',
-            itemContent: (
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DateTimePicker label='Basic date time picker' />
-              </LocalizationProvider>
-            ),
+            itemContent: ({ menuIsVisiable, isClicked, handleClick }) => {
+              return (
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DateTimePicker
+                    open={menuIsVisiable && isClicked}
+                    onOpen={() => {
+                      handleClick && handleClick(true);
+                    }}
+                    onClose={() => {
+                      handleClick && handleClick(false);
+                    }}
+                    label='Basic date time picker'
+                  />
+                </LocalizationProvider>
+              );
+            },
           },
           {
             key: '5',
-            itemContent: <>Sub Item 2</>,
+            itemContent: () => <>Sub Item 2</>,
             subMenu: {
               items: [
                 {
                   key: '6',
-                  itemContent: (
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <DateTimePicker label='Basic date time picker' />
-                    </LocalizationProvider>
-                  ),
+                  itemContent: ({ menuIsVisiable, isClicked, handleClick }) => {
+                    return (
+                      <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DateTimePicker
+                          open={menuIsVisiable && isClicked}
+                          onOpen={() => {
+                            handleClick && handleClick(true);
+                          }}
+                          onClose={() => {
+                            handleClick && handleClick(false);
+                          }}
+                          label='Basic date time picker'
+                        />
+                      </LocalizationProvider>
+                    );
+                  },
                 },
               ],
               spacing: '0px 0px 0px 15px',

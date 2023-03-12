@@ -1,5 +1,5 @@
-import { Box } from '@mui/material';
 import { FC, useRef, useState } from 'react';
+import { Box } from '@mui/material';
 import MenuWrapper from './MenuWrapper';
 import { StyledMenuButtonWrapper } from './styles';
 import { MenuItemT } from './types';
