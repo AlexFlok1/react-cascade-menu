@@ -1,5 +1,5 @@
 import { FC, useRef, useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, CSSObject } from '@mui/material';
 import MenuWrapper from './MenuWrapper';
 import { StyledMenuButtonWrapper } from './styles';
 import { MenuItemT } from './types';
@@ -8,12 +8,17 @@ type CascadeMenuProps = {
   menu: MenuItemT[];
   triggerEvent?: 'click' | 'hover';
   triggerElement: React.ReactNode;
+  customStyle?: {
+    menuBox?: CSSObject;
+    menuButtonWrapper?: CSSObject;
+  };
 };
 
 const CascadeMenu: FC<CascadeMenuProps> = ({
   menu,
   triggerElement,
   triggerEvent = 'hover',
+  customStyle,
 }) => {
   const [show, setShow] = useState(false);
   const attachemnt = useRef<HTMLDivElement>(null);
@@ -21,6 +26,7 @@ const CascadeMenu: FC<CascadeMenuProps> = ({
   return (
     <>
       <StyledMenuButtonWrapper
+        customStyle={customStyle?.menuButtonWrapper}
         ref={attachemnt}
         {...(triggerEvent === 'hover'
           ? {

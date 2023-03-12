@@ -18,7 +18,7 @@ const MenuItem: FC<MenuItemProps> = ({ itemContent, subMenu, isVisible }) => {
       onClick={(event) => {
         event.stopPropagation();
       }}
-      onMouseOver={() => {
+      onMouseOver={(event) => {
         setShow(true);
       }}
       onMouseLeave={() => {
