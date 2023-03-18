@@ -1,10 +1,14 @@
-import { Box, Paper, styled } from '@mui/material';
+import { Box, CSSObject, Paper, styled } from '@mui/material';
 
 type StyledMenuWrapperPropsT = {
   originPosition?: {
     vertical: 'top' | 'bottom' | 'middle';
     horizontal: 'left' | 'right' | 'center';
   };
+};
+
+type StyledMenuButtonWrapperPropsT = {
+  customStyle?: CSSObject;
 };
 
 const handleHorizontalPosition = (value: 'left' | 'right' | 'center') => {
@@ -47,10 +51,14 @@ export const StyledMenuWrapper = styled(Box, {
   top: handleVerticalPosition(originPosition?.vertical || 'bottom'),
 }));
 
-export const StyledMenuButtonWrapper = styled(Box)({
-  display: 'inline-block',
-  position: 'relative',
-});
+export const StyledMenuButtonWrapper = styled(Box)(
+  ({ customStyle }: StyledMenuButtonWrapperPropsT) =>
+    () => ({
+      display: 'inline-block',
+      position: 'relative',
+      ...customStyle,
+    })
+);
 
 export const StyledMenuItem = styled('span')({
   display: 'flex',

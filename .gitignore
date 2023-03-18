@@ -11,6 +11,12 @@
 # production
 /build
 
+#ignore everything except component folder
+/src/*
+
+!/src/cascadeMenu
+!/src/cascadeMenu/**
+
 # misc
 .DS_Store
 .env.local
