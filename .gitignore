@@ -15,6 +15,7 @@
 /src/*
 
 !/src/cascadeMenu
+!/src/cascadeMenu/**
 
 # misc
 .DS_Store
