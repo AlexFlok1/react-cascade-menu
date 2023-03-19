@@ -9,7 +9,7 @@
 /coverage
 
 # production
-/build
+/dist
 
 #ignore everything except component folder
 /src/*
