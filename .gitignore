@@ -16,6 +16,8 @@
 
 !/src/cascadeMenu
 !/src/cascadeMenu/**
+!/src/examples
+!/src/examples/**
 
 # misc
 .DS_Store
