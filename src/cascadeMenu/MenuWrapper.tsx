@@ -2,6 +2,7 @@ import { FC } from 'react';
 import MenuItem from './MenuItem';
 import { StyledMenuBox, StyledMenuWrapper } from './styles';
 import { MenuItemT } from './types';
+import { CSSObject } from '@mui/material';
 
 type MenuWrapperPropsT = {
   isVisible: boolean;
@@ -12,6 +13,7 @@ type MenuWrapperPropsT = {
     horizontal: 'left' | 'right' | 'center';
   };
   spacing?: string;
+  customStyle?: CSSObject;
 };
 
 const MenuWrapper: FC<MenuWrapperPropsT> = ({
@@ -20,6 +22,7 @@ const MenuWrapper: FC<MenuWrapperPropsT> = ({
   boxPosition,
   attachedTo,
   spacing,
+  customStyle,
 }) => {
   const handleAttachment = () => {
     const node = attachedTo?.current;
@@ -37,7 +40,7 @@ const MenuWrapper: FC<MenuWrapperPropsT> = ({
       style={attachedTo ? handleAttachment() : {}}
       padding={`${spacing}`}
     >
-      <StyledMenuBox elevation={2}>
+      <StyledMenuBox elevation={2} customStyle={customStyle}>
         {menuItems &&
           menuItems.length > 0 &&
           menuItems.map((item) => (
@@ -46,6 +49,7 @@ const MenuWrapper: FC<MenuWrapperPropsT> = ({
               key={item.key}
               subMenu={item.subMenu}
               itemContent={item.itemContent}
+              customStyleBox={customStyle}
             />
           ))}
       </StyledMenuBox>

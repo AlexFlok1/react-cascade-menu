@@ -11,6 +11,10 @@ type StyledMenuButtonWrapperPropsT = {
   customStyle?: CSSObject;
 };
 
+type StyledMenuBoxPropsT = {
+  customStyle?: CSSObject;
+};
+
 const handleHorizontalPosition = (value: 'left' | 'right' | 'center') => {
   switch (value) {
     case 'right':
@@ -33,38 +37,36 @@ const handleVerticalPosition = (value: 'top' | 'bottom' | 'middle') => {
   }
 };
 
-export const StyledMenuBox = styled(Paper)({
+export const StyledMenuBox = styled(Paper, {
+  shouldForwardProp: (prop) => prop !== 'customStyle',
+})(({ customStyle }: StyledMenuBoxPropsT) => () => ({
   borderRadius: '10px',
-  width: '200px',
-  height: '200px',
   position: 'relative',
-});
+  ...customStyle,
+}));
 
 export const StyledMenuWrapper = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'originPosition',
 })(({ originPosition }: StyledMenuWrapperPropsT) => () => ({
   background: 'transparent',
-  minWidth: '200px',
-  minHeight: '200px',
   position: 'absolute',
+  width: 'auto',
   left: handleHorizontalPosition(originPosition?.horizontal || 'left'),
   top: handleVerticalPosition(originPosition?.vertical || 'bottom'),
 }));
 
-export const StyledMenuButtonWrapper = styled(Box)(
-  ({ customStyle }: StyledMenuButtonWrapperPropsT) =>
-    () => ({
-      display: 'inline-block',
-      position: 'relative',
-      ...customStyle,
-    })
-);
+export const StyledMenuButtonWrapper = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'customStyle',
+})(({ customStyle }: StyledMenuButtonWrapperPropsT) => () => ({
+  display: 'inline-block',
+  position: 'relative',
+  ...customStyle,
+}));
 
 export const StyledMenuItem = styled('span')({
   display: 'flex',
   position: 'relative',
   width: '100%',
-  minHeight: '30px',
   textAlign: 'center',
   justifyContent: 'center',
   cursor: 'pointer',

@@ -1,11 +1,22 @@
 import { FC, useEffect, useState } from 'react';
+import { CSSObject } from '@mui/material';
+
 import MenuWrapper from './MenuWrapper';
-import { StyledMenuItem } from './styles';
 import { MenuItemT } from './types';
 
-type MenuItemProps = Omit<MenuItemT, 'key'> & { isVisible: boolean };
+import { StyledMenuItem } from './styles';
 
-const MenuItem: FC<MenuItemProps> = ({ itemContent, subMenu, isVisible }) => {
+type MenuItemProps = Omit<MenuItemT, 'key'> & {
+  isVisible: boolean;
+  customStyleBox?: CSSObject;
+};
+
+const MenuItem: FC<MenuItemProps> = ({
+  itemContent,
+  subMenu,
+  isVisible,
+  customStyleBox,
+}) => {
   const [show, setShow] = useState(false);
   const [clicked, setClicked] = useState(false);
 
@@ -37,6 +48,7 @@ const MenuItem: FC<MenuItemProps> = ({ itemContent, subMenu, isVisible }) => {
           menuItems={subMenu.items}
           boxPosition={{ vertical: 'top', horizontal: 'right' }}
           spacing={subMenu.spacing}
+          customStyle={customStyleBox}
         />
       )}
     </StyledMenuItem>
