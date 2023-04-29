@@ -48,7 +48,7 @@ const MenuItem: FC<MenuItemProps> = ({
           menuItems={subMenu.items}
           boxPosition={{ vertical: 'top', horizontal: 'right' }}
           spacing={subMenu.spacing}
-          customStyle={customStyleBox}
+          customStyleBoxWrapper={customStyleBox}
         />
       )}
     </StyledMenuItem>

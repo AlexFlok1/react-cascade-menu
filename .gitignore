@@ -8,16 +8,16 @@
 # testing
 /coverage
 
-# production
-/dist
 
 #ignore everything except component folder
-/src/*
 
 !/src/cascadeMenu
 !/src/cascadeMenu/**
 !/src/examples
 !/src/examples/**
+
+/src/*
+
 
 # misc
 .DS_Store

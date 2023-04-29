@@ -5,6 +5,7 @@ type StyledMenuWrapperPropsT = {
     vertical: 'top' | 'bottom' | 'middle';
     horizontal: 'left' | 'right' | 'center';
   };
+  customStyle?: CSSObject;
 };
 
 type StyledMenuButtonWrapperPropsT = {
@@ -53,6 +54,7 @@ export const StyledMenuWrapper = styled(Box, {
   width: 'auto',
   left: handleHorizontalPosition(originPosition?.horizontal || 'left'),
   top: handleVerticalPosition(originPosition?.vertical || 'bottom'),
+  zIndex: 10000,
 }));
 
 export const StyledMenuButtonWrapper = styled(Box, {

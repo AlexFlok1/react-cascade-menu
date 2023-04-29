@@ -31,6 +31,7 @@ type CascadeMenuProps = {
   rootIdName: string;
   customStyle?: {
     menuBox?: CSSObject;
+    menuBoxWrapper?: CSSObject;
     menuButtonWrapper?: CSSObject;
   };
 };
@@ -83,7 +84,8 @@ const CascadeMenu: FC<CascadeMenuProps> = ({
               isVisible={show}
               menuItems={menu}
               attachedTo={attachemnt}
-              customStyle={customStyle?.menuBox}
+              customStyleBox={customStyle?.menuBox}
+              customStyleBoxWrapper={customStyle?.menuBoxWrapper}
             />
           </Box>,
           portalContainer

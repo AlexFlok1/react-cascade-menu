@@ -13,7 +13,8 @@ type MenuWrapperPropsT = {
     horizontal: 'left' | 'right' | 'center';
   };
   spacing?: string;
-  customStyle?: CSSObject;
+  customStyleBox?: CSSObject;
+  customStyleBoxWrapper?: CSSObject;
 };
 
 const MenuWrapper: FC<MenuWrapperPropsT> = ({
@@ -22,7 +23,8 @@ const MenuWrapper: FC<MenuWrapperPropsT> = ({
   boxPosition,
   attachedTo,
   spacing,
-  customStyle,
+  customStyleBox,
+  customStyleBoxWrapper,
 }) => {
   const handleAttachment = () => {
     const node = attachedTo?.current;
@@ -39,8 +41,9 @@ const MenuWrapper: FC<MenuWrapperPropsT> = ({
       originPosition={boxPosition}
       style={attachedTo ? handleAttachment() : {}}
       padding={`${spacing}`}
+      customStyle={customStyleBoxWrapper}
     >
-      <StyledMenuBox elevation={2} customStyle={customStyle}>
+      <StyledMenuBox elevation={2} customStyle={customStyleBox}>
         {menuItems &&
           menuItems.length > 0 &&
           menuItems.map((item) => (
@@ -49,7 +52,7 @@ const MenuWrapper: FC<MenuWrapperPropsT> = ({
               key={item.key}
               subMenu={item.subMenu}
               itemContent={item.itemContent}
-              customStyleBox={customStyle}
+              customStyleBox={customStyleBox}
             />
           ))}
       </StyledMenuBox>
